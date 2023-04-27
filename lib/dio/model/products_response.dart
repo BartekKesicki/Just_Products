@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:just_products/model/product.dart';
+import 'package:just_products/dio/model/product.dart';
 
 part 'products_response.g.dart';
 

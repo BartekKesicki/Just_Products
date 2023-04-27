@@ -18,7 +18,7 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
-    _bloc = ProductsBloc();
+    _bloc = context.read<ProductsBloc>();
   }
 
   @override
