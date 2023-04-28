@@ -1,3 +1,3 @@
 abstract class ProductsEvent {}
 
-class LoadListProductsEvent {}
+class LoadListProductsEvent extends ProductsEvent {}
