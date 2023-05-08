@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_products/products/model/product_ui.dart';
 import 'package:just_products/products/product_list_item.dart';
 import 'package:just_products/products/products_bloc.dart';
 import 'package:just_products/products/products_event.dart';

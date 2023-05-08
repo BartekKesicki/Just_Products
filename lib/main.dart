@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_products/converters/product_converter.dart';
 import 'package:just_products/dio/dio_client.dart';
+import 'package:just_products/product_details/product_details_bloc.dart';
 import 'package:just_products/products/products_bloc.dart';
 import 'package:just_products/products/products_page.dart';
 import 'package:just_products/repository/product_repository.dart';
@@ -36,6 +37,11 @@ class MyApp extends StatelessWidget {
         ),
         Provider(
           create: (BuildContext context) => ProductsBloc(
+            context.read<ProductUseCase>(),
+          ),
+        ),
+        Provider(
+          create: (BuildContext context) => ProductDetailsBloc(
             context.read<ProductUseCase>(),
           ),
         ),

@@ -13,7 +13,6 @@ class ProductListItem extends StatelessWidget {
       children: [
         _buildTitleWidget(),
         _buildProductInformationRow(),
-        _buildAdditionalImages(),
         _buildDivider(context),
       ],
     );
@@ -70,24 +69,6 @@ class ProductListItem extends StatelessWidget {
         )
       ],
     );
-  }
-
-  Widget _buildAdditionalImages() {
-    //todo fix
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: productUi.images.length,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return SizedBox(
-              width: 40.0,
-              height: 40.0,
-              child: Container(
-                color: Colors.black,
-              )
-              //Image.network(productUi.images[index]),
-              );
-        });
   }
 
   Widget _buildDivider(BuildContext context) {
