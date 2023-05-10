@@ -4,6 +4,7 @@ import 'package:just_products/products/product_list_item.dart';
 import 'package:just_products/products/products_bloc.dart';
 import 'package:just_products/products/products_event.dart';
 import 'package:just_products/products/products_state.dart';
+import 'package:just_products/widgets/loading_widget.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -27,7 +28,7 @@ class _ProductsPageState extends State<ProductsPage> {
           bloc: context.read<ProductsBloc>(),
           builder: (BuildContext context, ProductsState state) {
             if (state is LoadingState) {
-              return _buildLoadingWidget();
+              return const LoadingWidget(text: "Downloading products...");
             } else if (state is InitProductsState) {
               return _buildInitialScreen();
             } else if (state is ErrorState) {
@@ -38,19 +39,6 @@ class _ProductsPageState extends State<ProductsPage> {
             return Container();
           },
         ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingWidget() {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          CircularProgressIndicator(),
-          Text("Downloading products...")
-        ],
       ),
     );
   }

@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:just_products/product_details/product_details_bloc.dart';
 import 'package:just_products/product_details/product_details_event.dart';
 import 'package:just_products/product_details/product_details_state.dart';
+import 'package:just_products/widgets/loading_widget.dart';
 
-class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key});
+class ProductDetailsPage extends StatefulWidget {
+  const ProductDetailsPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _ProductDetailsScreenState();
+  State<StatefulWidget> createState() => _ProductDetailsPageState();
 }
 
-class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -26,7 +27,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           bloc: context.read<ProductDetailsBloc>(),
           builder: (BuildContext context, ProductDetailsState state) {
             if (state is LoadingState) {
-              return _buildLoadingWidget();
+              return const LoadingWidget(text: "Downloading product");
             } if (state is InitProductDetailsState) {
               context.read<ProductDetailsBloc>().add(LoadProductDetailsEvent());
             }
@@ -36,10 +37,5 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         ),
       ),
     );
-  }
-
-  Widget _buildLoadingWidget() {
-    //todo create loading widget
-    return Container();
   }
 }
