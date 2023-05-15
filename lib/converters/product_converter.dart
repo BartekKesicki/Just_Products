@@ -5,10 +5,10 @@ import 'package:just_products/products/model/product_ui.dart';
 class ProductConverter {
 
   List<ProductUi> convertResponseToProductUiList(ProductsResponse response) {
-    return response.products.map((e) => _convertProductToProductUi(e)).toList();
+    return response.products.map((e) => convertProductToProductUi(e)).toList();
   }
 
-  ProductUi _convertProductToProductUi(Product product) {
+  ProductUi convertProductToProductUi(Product product) {
     return ProductUi(
       id: product.id,
       title: product.title,

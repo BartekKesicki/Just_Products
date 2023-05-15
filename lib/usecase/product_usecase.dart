@@ -14,4 +14,10 @@ class ProductUseCase {
         productConverter.convertResponseToProductUiList(products);
     return productsUi;
   }
+
+  Future<ProductUi> getProduct(int id) async {
+    final product = await productRepository.getProduct(id);
+    final productUi = productConverter.convertProductToProductUi(product);
+    return productUi;
+  }
 }

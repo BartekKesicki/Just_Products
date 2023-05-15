@@ -7,12 +7,18 @@ import 'package:just_products/usecase/product_usecase.dart';
 
 class ProductDetailsBloc extends Bloc<ProductDetailsEvent, ProductDetailsState> {
 
+  final ProductUseCase _productUseCase;
+
   ProductDetailsBloc(this._productUseCase) : super(InitProductDetailsState()) {
     on<LoadProductDetailsEvent>((event, emit) async {
       emit(LoadingState());
-      //todo load product details
+      try {
+        final productUi = await _productUseCase.getProduct(event.productId);
+        emit(LoadedProductDetailsState(productUi));
+      } catch(ex) {
+        print(ex);
+        emit(ErrorState());
+      }
     });
   }
-
-  final ProductUseCase _productUseCase;
 }
