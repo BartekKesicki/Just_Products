@@ -53,12 +53,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         children: [
           const Text("OOPS! SOMETHING WENT WRONG"),
           ElevatedButton(
-              onPressed: () {
-                context
-                    .read<ProductDetailsBloc>()
-                    .add(LoadProductDetailsEvent(widget.productId));
-              },
-              child: const Text("TRY AGAIN..."))
+            onPressed: () {
+              context
+                  .read<ProductDetailsBloc>()
+                  .add(LoadProductDetailsEvent(widget.productId));
+            },
+            child: const Text("TRY AGAIN..."),
+          ),
         ],
       ),
     );
@@ -66,6 +67,26 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   Widget _buildProductPage(ProductUi productUi) {
     //todo build product ui widget
-    return Container();
+    return Column(
+      children: [
+        _buildProductPhoto(productUi.thumbnail),
+        _buildTitleSection(productUi.title)
+      ],
+    );
+  }
+
+  Widget _buildProductPhoto(String url) {
+    return Row(
+      children: [Expanded(child: Image.network(url))],
+    );
+  }
+
+  Widget _buildTitleSection(String title) {
+    return Center(
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }
